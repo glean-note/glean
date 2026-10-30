@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/store"
-	"github.com/glean/glean/internal/world"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/store"
+	"github.com/glean-note/glean/internal/world"
 )
 
 //go:embed starters

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/glean/glean/internal/cli"
-	"github.com/glean/glean/internal/store"
+	"github.com/glean-note/glean/internal/cli"
+	"github.com/glean-note/glean/internal/store"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"

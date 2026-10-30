@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/glean/glean/internal/core"
+	"github.com/glean-note/glean/internal/core"
 )
 
 // Setup and sky lifecycle bindings delegate to the core service

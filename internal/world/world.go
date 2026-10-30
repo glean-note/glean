@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"hash/fnv"
 
-	"github.com/glean/glean/internal/note"
+	"github.com/glean-note/glean/internal/note"
 )
 
 const (

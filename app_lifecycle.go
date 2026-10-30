@@ -4,7 +4,7 @@ import (
 	"context"
 	"os"
 
-	"github.com/glean/glean/internal/winapi"
+	"github.com/glean-note/glean/internal/winapi"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 

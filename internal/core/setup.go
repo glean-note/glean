@@ -4,9 +4,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/glean/glean/internal/activity"
-	"github.com/glean/glean/internal/adjacency"
-	"github.com/glean/glean/internal/store"
+	"github.com/glean-note/glean/internal/activity"
+	"github.com/glean-note/glean/internal/adjacency"
+	"github.com/glean-note/glean/internal/store"
 )
 
 // SkyStateView is what the frontend uses to decide setup, recovery, or

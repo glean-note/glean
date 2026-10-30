@@ -8,11 +8,11 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/glean/glean/internal/activity"
-	"github.com/glean/glean/internal/growth"
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/store"
-	"github.com/glean/glean/internal/world"
+	"github.com/glean-note/glean/internal/activity"
+	"github.com/glean-note/glean/internal/growth"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/store"
+	"github.com/glean-note/glean/internal/world"
 )
 
 // stageLabel returns a human-readable stage name for CLI output

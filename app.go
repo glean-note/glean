@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 
-	"github.com/glean/glean/internal/core"
+	"github.com/glean-note/glean/internal/core"
 	wailsrt "github.com/wailsapp/wails/v2/pkg/runtime"
 )
 

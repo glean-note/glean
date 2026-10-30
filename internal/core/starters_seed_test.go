@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/glean/glean/internal/store"
-	"github.com/glean/glean/internal/wikilink"
+	"github.com/glean-note/glean/internal/store"
+	"github.com/glean-note/glean/internal/wikilink"
 )
 
 func setupService(t *testing.T) *Service {

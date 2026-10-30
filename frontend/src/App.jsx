@@ -285,7 +285,7 @@ export default function App() {
         stats={stats}
         skyName={skyName}
         skyPath={skyPath}
-        version="v2.0.0"
+        version="v0.1.0"
         systemInfo={systemInfo}
         onOpenNote={handleOpenNote}
         onNewNote={handleNewNote}

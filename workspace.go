@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/glean/glean/internal/store"
+	"github.com/glean-note/glean/internal/store"
 )
 
 // GetWorkspaceState returns the persisted tab state

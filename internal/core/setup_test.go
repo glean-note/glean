@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/glean/glean/internal/activity"
-	"github.com/glean/glean/internal/adjacency"
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/store"
+	"github.com/glean-note/glean/internal/activity"
+	"github.com/glean-note/glean/internal/adjacency"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/store"
 )
 
 // setTestEnv redirects AppConfigDir to a fresh temp tree.

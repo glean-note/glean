@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/world"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/world"
 )
 
 // RegistryEntry is the persisted per-note behavior metadata. No body

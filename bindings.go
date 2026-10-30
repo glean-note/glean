@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/glean/glean/internal/core"
-	"github.com/glean/glean/internal/store"
+	"github.com/glean-note/glean/internal/core"
+	"github.com/glean-note/glean/internal/store"
 )
 
 // Bindings for every core service method the frontend calls. Each is a

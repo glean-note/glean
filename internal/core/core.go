@@ -14,15 +14,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/glean/glean/internal/activity"
-	"github.com/glean/glean/internal/adjacency"
-	"github.com/glean/glean/internal/ambient"
-	vaultassets "github.com/glean/glean/internal/assets"
-	"github.com/glean/glean/internal/growth"
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/store"
-	"github.com/glean/glean/internal/wikilink"
-	"github.com/glean/glean/internal/world"
+	"github.com/glean-note/glean/internal/activity"
+	"github.com/glean-note/glean/internal/adjacency"
+	"github.com/glean-note/glean/internal/ambient"
+	vaultassets "github.com/glean-note/glean/internal/assets"
+	"github.com/glean-note/glean/internal/growth"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/store"
+	"github.com/glean-note/glean/internal/wikilink"
+	"github.com/glean-note/glean/internal/world"
 )
 
 // Service holds the sky domain logic: notes, links, stats, folders,

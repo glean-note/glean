@@ -485,8 +485,8 @@ namespace GleanInstaller
                     string uninstallerPath = Path.Combine(installDir, "gleanUninstaller.exe");
                     string iconPath = Path.Combine(installDir, "glean.exe");
                     RunReg(key, "DisplayName", "Glean");
-                    RunReg(key, "DisplayVersion", "1.5.0");
-                    RunReg(key, "Publisher", "rokuroo171");
+                    RunReg(key, "DisplayVersion", "0.1.0");
+                    RunReg(key, "Publisher", "glean-note");
                     RunReg(key, "InstallLocation", installDir);
                     RunReg(key, "UninstallString", "\"" + uninstallerPath + "\"");
                     RunReg(key, "DisplayIcon", "\"" + iconPath + "\"");

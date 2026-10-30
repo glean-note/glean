@@ -17,7 +17,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/glean/glean/internal/store"
+	"github.com/glean-note/glean/internal/store"
 )
 
 // MaxImageBytes caps a single imported image. 20 MB is generous for

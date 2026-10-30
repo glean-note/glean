@@ -1,7 +1,7 @@
 package growth
 
 import (
-	"github.com/glean/glean/internal/note"
+	"github.com/glean-note/glean/internal/note"
 )
 
 // Stage represents the visual brightness phase of a note,

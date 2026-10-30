@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/glean/glean/internal/growth"
-	"github.com/glean/glean/internal/note"
+	"github.com/glean-note/glean/internal/growth"
+	"github.com/glean-note/glean/internal/note"
 )
 
 // Activity is the persisted sky activity summary

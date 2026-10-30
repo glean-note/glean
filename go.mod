@@ -1,4 +1,4 @@
-module github.com/glean/glean
+module github.com/glean-note/glean
 
 go 1.26.0
 

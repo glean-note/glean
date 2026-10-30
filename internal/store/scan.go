@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/world"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/world"
 )
 
 // scanDir recursively collects md files under dir, returning relative paths

@@ -4,7 +4,7 @@ import Icon from './Icon'
 import Appearance from './Appearance'
 
 const wails = window.go?.main
-const REPO_URL = 'https://github.com/rokuroo171/glean'
+const REPO_URL = 'https://github.com/glean-note/glean'
 const OCTOCAT = 'https://avatars.githubusercontent.com/u/9919?s=200'
 
 const sectionTitle = {
@@ -74,7 +74,7 @@ export default function SettingsPane({ skyName, skyPath, version, systemInfo }) 
   const [stars, setStars] = useState(null)
 
   useEffect(() => {
-    fetch('https://api.github.com/repos/rokuroo171/glean')
+    fetch('https://api.github.com/repos/glean-note/glean')
       .then(r => r.ok ? r.json() : null)
       .then(d => { if (d) setStars(d.stargazers_count) })
       .catch(() => {})
@@ -156,7 +156,7 @@ export default function SettingsPane({ skyName, skyPath, version, systemInfo }) 
                 alt=""
                 style={{ width: 18, height: 18, borderRadius: '50%' }}
               />
-              <span>rokuroo171/glean</span>
+              <span>glean-note/glean</span>
               <Icon name="external-link" size={12} color={colors.accent} />
             </button>
             {stars !== null && (

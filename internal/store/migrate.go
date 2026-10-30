@@ -6,10 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/glean/glean/internal/activity"
-	"github.com/glean/glean/internal/adjacency"
-	"github.com/glean/glean/internal/note"
-	"github.com/glean/glean/internal/world"
+	"github.com/glean-note/glean/internal/activity"
+	"github.com/glean-note/glean/internal/adjacency"
+	"github.com/glean-note/glean/internal/note"
+	"github.com/glean-note/glean/internal/world"
 )
 
 // LegacyPaths returns the three legacy JSON paths in the config dir

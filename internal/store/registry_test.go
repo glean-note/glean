@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/glean/glean/internal/note"
+	"github.com/glean-note/glean/internal/note"
 )
 
 func TestRegistryRoundTrip(t *testing.T) {
