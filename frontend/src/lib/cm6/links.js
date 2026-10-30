@@ -1,6 +1,7 @@
 import { ViewPlugin, Decoration, EditorView } from '@codemirror/view'
 import { RangeSetBuilder } from '@codemirror/state'
 import { syntaxTree } from '@codemirror/language'
+import { treeAdvanced } from './tree'
 import { colors } from '../theme'
 
 // Links stay click-inert so a plain click can never navigate the app window;
@@ -58,7 +59,7 @@ export const linkTips = ViewPlugin.fromClass(
   class {
     constructor(view) { this.decos = decorationsFor(view) }
     update(update) {
-      if (update.docChanged || update.viewportChanged) this.decos = decorationsFor(update.view)
+      if (update.docChanged || update.viewportChanged || treeAdvanced(update)) this.decos = decorationsFor(update.view)
     }
   },
   { decorations: (v) => v.decos },

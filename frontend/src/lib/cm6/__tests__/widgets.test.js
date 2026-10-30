@@ -25,10 +25,21 @@ function caret(ctx, pos) {
 
 const settleMs = (ms = 30) => new Promise((r) => setTimeout(r, ms))
 
+// the diagram box appears once mermaid's dynamic import resolves; a fixed
+// settle races that import whenever the other test files are loading too
+async function waitFor(predicate, ms = 20000) {
+  const deadline = Date.now() + ms
+  for (;;) {
+    const hit = predicate()
+    if (hit || Date.now() > deadline) return hit
+    await settle(25)
+  }
+}
+
 describe('task checkboxes', () => {
   it('renders a checked box for [x] and unchecked for [ ]', async () => {
     const ctx = mount('- [x] done\n- [ ] not done\n')
-    await settle()
+    await waitFor(() => ctx.view.dom.querySelectorAll('.glean-taskbox [role=checkbox]').length === 2)
     const boxes = [...ctx.view.dom.querySelectorAll('.glean-taskbox [role=checkbox]')]
     destroy(ctx)
     expect(boxes.length).toBe(2)
@@ -199,10 +210,9 @@ describe('math', () => {
 describe('mermaid', () => {
   it('mounts a diagram box under the fence', async () => {
     const ctx = mount('```mermaid\ngraph TD\nA-->B\n```\n')
-    await settle()
-    const boxes = ctx.view.dom.querySelectorAll('.glean-mermaid')
+    const count = await waitFor(() => ctx.view.dom.querySelectorAll('.glean-mermaid').length)
     destroy(ctx)
-    expect(boxes.length).toBe(1)
+    expect(count).toBe(1)
   })
 
   it('non-mermaid fences get none', async () => {

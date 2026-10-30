@@ -1,6 +1,7 @@
 import { ViewPlugin, Decoration, EditorView } from '@codemirror/view'
 import { RangeSetBuilder } from '@codemirror/state'
 import { syntaxTree } from '@codemirror/language'
+import { treeAdvanced } from './tree'
 
 // The caret-gated reveal state, the heart of the live preview contract.
 // Inline syntax (emphasis, strike, code marks) and block prefixes (heading
@@ -22,7 +23,7 @@ const INLINE_PAIRS = new Set(['EmphasisMark', 'StrikethroughMark', 'CodeMark', '
 // TaskMarker is absent: widgets.js replaces [x] markers with the checkbox
 // itself, so there is no raw state to reveal and both layers replacing the
 // same range would conflict. ListMark is absent too: bullets and numbers
-// are structure, not hidden syntax — they stay visible like Obsidian's,
+// are structure, not hidden syntax: they stay visible like Obsidian's,
 // styled accent-dim through blocks.js, and never collapse
 const BLOCK_PREFIXES = new Set(['HeaderMark', 'QuoteMark'])
 
@@ -101,7 +102,7 @@ export const reveal = ViewPlugin.fromClass(
       this.atomic = b.atomic
     }
     update(update) {
-      if (update.docChanged || update.selectionSet || update.viewportChanged) {
+      if (update.docChanged || update.selectionSet || update.viewportChanged || treeAdvanced(update)) {
         const b = build(update.state)
         this.decorations = b.decorations
         this.atomic = b.atomic

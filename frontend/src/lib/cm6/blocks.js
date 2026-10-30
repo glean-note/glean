@@ -1,6 +1,7 @@
 import { ViewPlugin, Decoration } from '@codemirror/view'
 import { RangeSetBuilder } from '@codemirror/state'
 import { syntaxTree } from '@codemirror/language'
+import { treeAdvanced } from './tree'
 import { EditorView } from '@codemirror/view'
 import { colors } from '../theme'
 
@@ -78,10 +79,12 @@ function build(view) {
           }
           lineDecos.push({ from: line.from, to: line.from, spec: { class: 'glean-fence-line' + cap + diff } })
         }
-        if (node.node.firstChild && node.node.firstChild.name === 'CodeInfo' && node.node.firstChild.to > node.node.firstChild.from) {
+        // CodeMark opens the fence, so CodeInfo is a child, not firstChild
+        const info = node.node.getChild('CodeInfo')
+        if (info && info.to > info.from) {
           markDecos.push({
-            from: node.node.firstChild.from,
-            to: node.node.firstChild.to,
+            from: info.from,
+            to: info.to,
             spec: { class: 'glean-codeinfo' },
           })
         }
@@ -179,8 +182,8 @@ function build(view) {
       // the markers, the content between them must carry the style or
       // **bold** renders as plain prose. Nodes cover marks plus content, so
       // hidden markers inside are unaffected and nesting (***bold italic***)
-      // stacks through overlapping spans. Paint only — weight, slant, strike
-      // — no geometry, per law 2
+      // stacks through overlapping spans. Paint only: weight, slant, strike,
+      // no geometry, per law 2
       if (name === 'Emphasis') {
         markDecos.push({ from: node.from, to: node.to, spec: { class: 'glean-em' } })
         return
@@ -220,7 +223,7 @@ export const blocks = ViewPlugin.fromClass(
       this.marks = b.marks
     }
     update(update) {
-      if (update.docChanged || update.viewportChanged) {
+      if (update.docChanged || update.viewportChanged || treeAdvanced(update)) {
         const b = build(update.view)
         this.lines = b.lines
         this.marks = b.marks
@@ -284,7 +287,7 @@ export const blocksTheme = EditorView.theme({
     opacity: 0.4,
   },
   // diff fences have no Lezer parser, so they highlight by line: added
-  // rows tint green, removed rows red, hunk headers muted — colored from
+  // rows tint green, removed rows red, hunk headers muted, colored from
   // the line class, which may carry color freely
   '.glean-fence-line.glean-diff-add': {
     background: 'rgba(86, 184, 122, 0.12)',

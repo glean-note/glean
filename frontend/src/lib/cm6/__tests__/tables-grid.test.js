@@ -19,12 +19,23 @@ async function settle(ms = 40) {
   await new Promise((r) => setTimeout(r, ms))
 }
 
+// the grid is built from the parsed tree, so it lands after the parser, not
+// after a fixed delay
+async function waitFor(predicate, ms = 20000) {
+  const deadline = Date.now() + ms
+  for (;;) {
+    const hit = predicate()
+    if (hit || Date.now() > deadline) return hit
+    await settle(25)
+  }
+}
+
 const TABLE = '| a | b |\n| --- | ---: |\n| 1 | 2 |\n'
 
 describe('table grid', () => {
   it('renders a grid widget over the table away from the caret', async () => {
     const ctx = mount('before\n\n' + TABLE + '\nafter\n')
-    await settle()
+    await waitFor(() => ctx.view.dom.querySelector('.glean-table'))
     const grid = ctx.view.dom.querySelector('.glean-table')
     const ths = [...(grid ? grid.querySelectorAll('th') : [])]
     const tds = [...(grid ? grid.querySelectorAll('td') : [])]
@@ -38,7 +49,7 @@ describe('table grid', () => {
 
   it('dissolves to raw pipes when the caret is inside the table', async () => {
     const ctx = mount('before\n\n' + TABLE + '\nafter\n')
-    await settle()
+    await waitFor(() => ctx.view.dom.querySelector('.glean-table'))
     expect(ctx.view.dom.querySelector('.glean-table')).not.toBeNull()
     const at = ctx.view.state.doc.toString().indexOf('| 1 |')
     ctx.view.dispatch({ selection: EditorSelection.cursor(at + 2) })
