@@ -1,4 +1,5 @@
 import { ViewPlugin, Decoration, WidgetType, EditorView } from '@codemirror/view'
+import { treeAdvanced } from './tree'
 import { RangeSetBuilder, StateField } from '@codemirror/state'
 import { syntaxTree } from '@codemirror/language'
 import { colors } from '../theme'
@@ -539,7 +540,9 @@ export const blockWidgets = StateField.define({
     return buildBlockSet(state)
   },
   update(value, tr) {
-    if (tr.docChanged || tr.selection) return buildBlockSet(tr.state)
+    // the table grid is tree derived, so a finished parse has to rebuild it
+    const parsed = syntaxTree(tr.startState) !== syntaxTree(tr.state)
+    if (tr.docChanged || tr.selection || parsed) return buildBlockSet(tr.state)
     return value
   },
   provide: (field) => EditorView.decorations.from(field),
@@ -560,7 +563,7 @@ export const widgets = ViewPlugin.fromClass(
       this.build(view)
     }
     update(update) {
-      if (update.docChanged || update.selectionSet || update.viewportChanged) this.build(update.view)
+      if (update.docChanged || update.selectionSet || update.viewportChanged || treeAdvanced(update)) this.build(update.view)
     }
     build(view) {
       const tree = syntaxTree(view.state)
@@ -606,7 +609,7 @@ export const widgetAtomic = ViewPlugin.fromClass(
       this.build(view)
     }
     update(update) {
-      if (update.docChanged) this.build(update.view)
+      if (update.docChanged || treeAdvanced(update)) this.build(update.view)
     }
     build(view) {
       const ranges = collectAtomic([], syntaxTree(view.state), view.state)

@@ -1,6 +1,7 @@
 import { ViewPlugin, Decoration, EditorView } from '@codemirror/view'
 import { RangeSetBuilder } from '@codemirror/state'
 import { syntaxTree } from '@codemirror/language'
+import { treeAdvanced } from './tree'
 import { colors } from '../theme'
 
 // HTML pair styling over the raw buffer, ported from the PM htmlPairs.
@@ -70,7 +71,7 @@ export const htmlPairs = ViewPlugin.fromClass(
       this.decorations = build(view.state)
     }
     update(update) {
-      if (update.docChanged) this.decorations = build(update.state)
+      if (update.docChanged || treeAdvanced(update)) this.decorations = build(update.state)
     }
   },
   { decorations: (v) => v.decorations },

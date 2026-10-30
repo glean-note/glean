@@ -12,5 +12,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     exclude: [...configDefaults.exclude, 'e2e/**'],
+    // mounting a fence pays for a lazy language import and jsdom CSS work
+    // in seconds; the 5s default measures the machine, not the logic
+    testTimeout: 30000,
   },
 })
